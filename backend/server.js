@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import colors from 'colors';
 import path from 'path';
+import fs from 'fs'
 import morgan from 'morgan';
 
 import productRoutes from './routes/productRoutes.js';
@@ -39,6 +40,13 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 console.log('process.env.NODE_ENV',process.env.NODE_ENV)
 if (process.env.NODE_ENV === 'production') {
 	console.log("HERE",__dirname)
+	fs.access(path.join(__dirname, '/frontend/build'), function(error) {
+		if (error) {
+		  console.log("Directory does not exist.")
+		} else {
+		  console.log("Directory exists.")
+		}
+	})
 	console.log(path.join(__dirname, '/frontend/build'))
 	app.use(express.static(path.join(__dirname, '/frontend/build')));
 
