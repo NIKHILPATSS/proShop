@@ -39,6 +39,7 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 console.log('process.env.NODE_ENV',process.env.NODE_ENV)
 if (process.env.NODE_ENV === 'production') {
 	console.log("HERE",__dirname)
+	console.log(path.join(__dirname, '/frontend/build'))
 	app.use(express.static(path.join(__dirname, '/frontend/build')));
 
 	app.get('*', (req, res) =>
