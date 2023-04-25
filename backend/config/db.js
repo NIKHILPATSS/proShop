@@ -11,7 +11,7 @@ const connectDB = async () =>
             useFindAndModify: false,
             useUnifiedTopology: true
         });
-
+        console.log("conn",conn)
         console.log(`Mongo DB Connected : ${ conn.connection.host }`.cyan.underline.bold);
     } catch (error)
     {
